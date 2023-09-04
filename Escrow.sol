@@ -1,14 +1,17 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.18;
 
 contract escrow {
     address public funder;
     address public beneficiary;
 
+    constructor() {
+        funder = msg.sender;
+    }
+
     // Function to add money in contract by the funder
     function fund(address _reciever) public payable {
         beneficiary = _reciever;
-        funder = msg.sender;
     }
 
     // Transfer all funds stored in this smart contract to beneficiary once job is done
